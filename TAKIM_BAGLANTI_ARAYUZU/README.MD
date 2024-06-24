@@ -18,7 +18,7 @@ $ pip install -r requirements.txt
 ````text
 TEAM_NAME=takim_adi
 PASSWORD=sifre
-EVALUATION_SERVER_URL="SUNUCUS BILGISI SUNUCU ACILDIGINDA YARISMACILAR ILE PAYLASILACAKTIR" 
+EVALUATION_SERVER_URL="SUNUCU BILGISI SUNUCU ACILDIGINDA YARISMACILAR ILE PAYLASILACAKTIR" 
 ````
 - Kod içerisinde yorumlar dikkate alınarak gerekli düzenlemeler ve geliştirmeler yapılır. 
   ```
@@ -31,7 +31,7 @@ python main.py
 ````
 # Yarışmacıların Modellerini Tanımlayacakları Kısımlar
 Yarışmacılar sağlanan sunucu haberleşme arayüzüne ait kodları modifiye etmeden, yanlızca ```object_detection_model.py``` içerisinde değişiklik yaparak modellerini sisteme entegre edebilirler.
-Geliştirilen modellerin ``ObjectDetectionModel`` sınıfına entegrasyonu ile ilgili detaylar kod içerisinde yorumlar ile belirtilmiştir.
+Geliştirilen modellerin ``ObjectDetectionModel`` sınıfına entegrasyonu ile ilgili detaylar kod içerisinde yorumlar ile belirtilmiştir. Yarışmacılar nesne tespiti ve pozisyon kestirimi için geliştirdikleri algoritmalarını yorumlara bakarak ilgili yerlere entegre edebilirler.
 
 ## Logların İncelenmesi
 Sistem çalışma esnasında gerçekleştirdiği işlemleri `_logs` klasörü altında kayıt altına almaktadır. Sistem hataları bu log dosyaları üzerinden takip edilebilir. Yarışma esnasında yapılacak itirazlarda log dosyası içeriği değerlendirmeye alınacaktır.
