@@ -9,7 +9,7 @@ from .detected_translation import DetectedTranslation
 
 
 class ObjectDetectionModel:
-    # Takımların modelleri icin tanimlanmis sinif
+    # Base class for team models
 
     def __init__(self, evaluation_server_url):
         logging.info('Created Object Detection Model')
@@ -18,17 +18,30 @@ class ObjectDetectionModel:
         # self.model = get_keras_model() # Örnektir!
 
     @staticmethod
-    def download_image(img_url, images_folder):
+    def download_image(img_url, images_folder, retries=3, initial_wait_time=0.1):
         t1 = time.perf_counter()
-        img_bytes = requests.get(img_url).content
-        image_name = img_url.split("/")[-1]  # frame_x.jpg
+        wait_time = initial_wait_time
 
-        with open(images_folder + image_name, 'wb') as img_file:
-            img_file.write(img_bytes)
+        for attempt in range(retries):
+            try:
+                response = requests.get(img_url, timeout=10)
+                response.raise_for_status()
+                img_bytes = response.content
+                image_name = img_url.split("/")[-1]
 
-        t2 = time.perf_counter()
+                with open(images_folder + image_name, 'wb') as img_file:
+                    img_file.write(img_bytes)
 
-        logging.info(f'{img_url} - Download Finished in {t2 - t1} seconds to {images_folder + image_name}')
+                t2 = time.perf_counter()
+                logging.info(f'{img_url} - Download Finished in {t2 - t1} seconds to {images_folder + image_name}')
+                return
+            except requests.exceptions.RequestException as e:
+                logging.error(f"Download failed for {img_url} on attempt {attempt + 1}: {e}")
+                logging.info(f"Retrying in {wait_time} seconds...")
+                time.sleep(wait_time)
+                wait_time *= 2
+
+        logging.error(f"Failed to download image from {img_url} after {retries} attempts.")
 
     def process(self, prediction,evaluation_server_url,health_status):
         # Yarışmacılar resim indirme, pre ve post process vb işlemlerini burada gerçekleştirebilir.
