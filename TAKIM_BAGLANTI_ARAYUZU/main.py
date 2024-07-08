@@ -1,11 +1,8 @@
-import concurrent.futures
 import logging
 from datetime import datetime
 from pathlib import Path
-
 from decouple import config
 from tqdm import tqdm
-
 from src.connection_handler import ConnectionHandler
 from src.frame_predictions import FramePredictions
 from src.object_detection_model import ObjectDetectionModel
@@ -40,13 +37,10 @@ def run():
     frames_json = server.get_frames()
 
     # Mevcutta aktif olan oturumdan tum translation verilerini cek.
-    translations_json = server.get_translations()
+    translations_json = server.get_translations()  
 
-
-
-    # images klasorunu olustur
-    images_folder = "./_images/"
-    Path(images_folder).mkdir(parents=True, exist_ok=True)
+    # Klasorun ve dosyanin yollarini cekelim
+    images_files, images_folder = server.get_listdir()
 
     # Nesne tespiti modelini frame frame olacak sekilde calistir
     for frame, translation in tqdm(zip(frames_json, translations_json), total=len(frames_json)):
@@ -56,7 +50,7 @@ def run():
         # Healt status kontrolu ikinci gorevde sistemin ne zaman devreye girmesi gerektigini gosterir
         health_status = translation['health_status']
         # Tespit modelini calistir
-        predictions = detection_model.process(predictions,evaluation_server_url, health_status)
+        predictions = detection_model.process(predictions,evaluation_server_url, health_status, images_folder, images_files)
         # Modelin o frame'e ait tahmin degerlerini sunucuya gonder
         result = server.send_prediction(predictions)
 

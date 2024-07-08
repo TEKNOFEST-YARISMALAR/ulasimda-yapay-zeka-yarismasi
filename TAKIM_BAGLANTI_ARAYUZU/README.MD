@@ -1,6 +1,6 @@
 # Yarışmacılar için Örnek Sunucu Bağlantı Arayüzü
-Bu repository Teknofest Ulaşımda Yapay Zeka yarışması değerlendirme sunucusuna(TUYZDS) örnek bağlantının kurulması için geliştirilmiştir.
-Yarışmacılar örnek arayüzü ihtiyaçlarına göre güncelleyebilir yada farklı bir dil ile (C++, vs) benzerini implemente edebilirler.
+Bu repository Teknofest Ulaşımda Yapay Zeka yarışması değerlendirme sunucusuna (TUYZDS) örnek bağlantının kurulması için geliştirilmiştir.
+Yarışmacılar örnek arayüzü ihtiyaçlarına göre güncelleyebilir ya da farklı bir dil ile (C++, vs) benzerini entegre edebilirler.
  
 
 # Kurulum
@@ -13,12 +13,13 @@ $ conda activate teknofest_yarisma
 ```shell
 $ pip install -r requirements.txt
 ```
-- `./config` klasorü altında bulunan `example.env` klasörü referans alınarak (kopyalanarak) `.env` isiminde bir dosya oluşturulur.
+- `./config` klasorü altında bulunan `example.env` klasörü referans alınarak (kopyalanarak) `.env` isminde bir dosya oluşturulur.
 - `.env` dosyasının içeriği teknofest tarafından verilen takım kullanıcı adı ve şifreleri ile güncellenerek kaydedilir. (Dikkat: Sonuçta oluşacak dosyanın yolu `./config/.env` şeklinde olacaktır.) 
 ````text
 TEAM_NAME=takim_adi
 PASSWORD=sifre
-EVALUATION_SERVER_URL="SUNUCU BILGISI SUNUCU ACILDIGINDA YARISMACILAR ILE PAYLASILACAKTIR" 
+EVALUATION_SERVER_URL="SERVER BILGISI SUNUCU ACILDIGINDA YARISMACILAR ILE PAYLASILACAKTIR"
+SESSION_NAME=oturum_ismi
 ````
 - Kod içerisinde yorumlar dikkate alınarak gerekli düzenlemeler ve geliştirmeler yapılır. 
   ```
