@@ -25,6 +25,9 @@ Bu depo, TEKNOFEST kapsamında düzenlenen "Ulaşımda Yapay Zeka Yarışması 2
 - [**Pozisyon Tespiti:**](https://github.com/TEKNOFEST-YARISMALAR/ulasimda-yapay-zeka-yarismasi/blob/main/pozisyon%20kestirimi.gif) Uçan arabanın GPS sistemleri devre dışı kaldığında görsel verilerle pozisyon kestirimi yapılması.
   ![UYZ_Diagram](https://github.com/TEKNOFEST-YARISMALAR/ulasimda-yapay-zeka-yarismasi/assets/47760055/a545ac68-8fd1-49b3-8d15-9e017493e114)
 
+## Yarışma Görevlerinin Değerlendirilmesi
+- Nesne Tespiti: MAP (IOU treshold = 0.5)
+- Pozisyon Kestirimi : [rpg trajectory evaluation](https://github.com/uzh-rpg/rpg_trajectory_evaluation?tab=readme-ov-file#single-trajectory-estimate) (Absolute Error>>Translation>>RMSE)
 
 ## Donanım ve Yazılım Gereksinimleri
 
