@@ -33,7 +33,8 @@ Bu depo, TEKNOFEST kapsamında düzenlenen "Havacılıkta Yapay Zeka Yarışmas�
   
 ## Yarışma Görevlerinin Değerlendirilmesi
 - Nesne Tespiti: MAP (IOU treshold = 0.5)
-- Pozisyon Kestirimi : [rpg trajectory evaluation](https://github.com/uzh-rpg/rpg_trajectory_evaluation?tab=readme-ov-file#single-trajectory-estimate) (Absolute Error>>Translation>>RMSE)
+- Pozisyon Kestirimi : (RMSE)
+- Referans Nesne Tespiti: MAP (IOU threshold = 0.25)
 
 ## Donanım ve Yazılım Gereksinimleri
 
